@@ -46,13 +46,13 @@ async def tg_handler():
 
                 i = queue.pop(0)
 
-                id = await start_uploading(i)
+                id, name = await start_uploading(i)
 
                 await del_anime(i["title"])
 
                 await save_uploads(i["title"])
 
-                await asyncio.sleep(5)
+                await asyncio.sleep(10)
 
             else:                
 
@@ -93,7 +93,7 @@ async def tg_handler():
 async def start_uploading(data):
 
     try:
-
+        name = title
         title = data["title"]
         link = data["link"]
         size = data["size"]
@@ -123,4 +123,4 @@ async def start_uploading(data):
     except:
         pass
 
-    return id
+    return id, name
