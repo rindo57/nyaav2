@@ -118,6 +118,7 @@ async def start_uploading(data):
                       disable_web_page_preview=True
                   )
         xt = untext.message_id
+        await asyncio.sleep(3)
     except:
         pass
 
