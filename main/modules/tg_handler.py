@@ -46,7 +46,7 @@ async def tg_handler():
 
                 i = queue.pop(0)
 
-                id, name = await start_uploading(i)
+                id, name, xt = await start_uploading(i)
 
                 await del_anime(i["title"])
 
@@ -119,8 +119,9 @@ async def start_uploading(data):
                       chat_id=KAYO_ID,
                       text=xtext,
                       disable_web_page_preview=True
-                  ) 
+                  )
+        xt = untext.message_id
     except:
         pass
 
-    return id, name
+    return id, name, xt
