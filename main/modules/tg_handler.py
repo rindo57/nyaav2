@@ -122,10 +122,8 @@ async def start_uploading(data):
                   )
         print("Downloading --> ",name)
         await asyncio.sleep(5)
-        await status.edit(await status_text(f"Downloading {name}"),reply_markup=button1)
         await sutext.edit(f"Download Complete : {name}")
         print("Encoding --> ",name)
-        await status.edit(await status_text(f"Encoding {name}"),reply_markup=button1)
         untext = await app.send_message(
                       chat_id=KAYO_ID,
                       text=xtext,
