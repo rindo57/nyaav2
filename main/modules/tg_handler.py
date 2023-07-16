@@ -93,8 +93,8 @@ async def tg_handler():
 async def start_uploading(data):
 
     try:
-        name = title
         title = data["title"]
+        name = title
         link = data["link"]
         size = data["size"]
         vlink = data['vlink']
