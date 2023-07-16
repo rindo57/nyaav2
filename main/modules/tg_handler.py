@@ -44,12 +44,11 @@ async def tg_handler():
 
                 i = queue[0]  
                 id, name, xt = await start_uploading(i)
-            
-                i = await queue.pop(0)
+    
                 await del_anime(i["title"])
 
                 await save_uploads(i["title"])
-
+                i = await queue.pop(0)
                 await asyncio.sleep(5)
 
             else:                
@@ -113,15 +112,6 @@ async def start_uploading(data):
             trust=trust.replace("No", "")
         xtext = f"**{title}**" + "\n" + f"{size}" + " | " + f"[Download]({dlink})" + " | " + f"[View]({vlink})" + f"{remake}" + f"{trust}" + "\n" + f"[#c{cid} {category}]({clink})" + "\n" + "\n" + f"[🔗 Magnet]({magnet})"
         KAYO_ID = -1001900103251
-        sid = -1001956121716
-        sutext = await app.send_message(
-                      chat_id=sid,
-                      text=name,
-                  )
-        print("Downloading --> ",name)
-        await asyncio.sleep(5)
-        await sutext.edit(f"Download Complete : {name}")
-        print("Encoding --> ",name)
         untext = await app.send_message(
                       chat_id=KAYO_ID,
                       text=xtext,
