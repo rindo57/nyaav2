@@ -44,13 +44,12 @@ async def tg_handler():
 
                 i = queue[0]  
 
-                i = queue.pop(0)
-
                 id, name, xt = await start_uploading(i)
 
                 await del_anime(i["title"])
 
                 await save_uploads(i["title"])
+                i = await queue.pop(0)
 
                 await asyncio.sleep(5)
 
