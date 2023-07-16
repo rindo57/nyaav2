@@ -13,7 +13,6 @@ def trim_link(vlink: str):
 def parse():
     a = feedparser.parse("https://siftrss.com/f/1LNyVoo9RP")
     b = a["entries"]
-    b = b[0:3]
     data = []       
 
     for i in b:
