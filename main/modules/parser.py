@@ -51,9 +51,8 @@ async def auto_parser():
         
         for i in rss:
             if i["title"] not in uanimes and i["title"] not in saved_anime:
-                if ".mkv" in i["title"] or ".mp4" in i["title"]:
-                    title = i["title"]
-                    await save_animedb(title,i)
+                title = i["title"]
+                await save_animedb(title,i)
 
         data = await get_animesdb()
         for i in data:
