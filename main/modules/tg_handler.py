@@ -115,7 +115,8 @@ async def start_uploading(data):
         untext = await app.send_message(
                       chat_id=KAYO_ID,
                       text=xtext,
-                      disable_web_page_preview=True
+                      disable_web_page_preview=True,
+                      parse_mode=html
                   )
         xt = untext.message_id
         await asyncio.sleep(3)
