@@ -116,7 +116,7 @@ async def start_uploading(data):
                       chat_id=KAYO_ID,
                       text=xtext,
                       disable_web_page_preview=True,
-                      parse_mode=html
+                      parse_mode="html"
                   )
         xt = untext.message_id
         await asyncio.sleep(3)
