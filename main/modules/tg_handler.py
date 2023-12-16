@@ -5,7 +5,7 @@ import aiohttp
 import requests
 import aiofiles
 import sys
-
+from pyrogram import enums
 from main.modules.compressor import compress_video
 
 from main.modules.utils import episode_linker, get_duration, get_epnum, status_text, get_filesize, b64_to_str, str_to_b64, send_media_and_reply, get_durationx
@@ -112,13 +112,13 @@ async def start_uploading(data):
             trust=trust.replace("No", "")
         xtext = "<b>" + f"{title}" + "</b>" + "<br>" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>" + f"{remake}" + f"{trust}" + "<br>" + f"<a href='{clink}'>#{cid} {category}</a>" + "<br>" + "<br>" + f"<a href='{magnet}'>🔗 Magnet</a>"
         KAYO_ID = -1001657593339
+        app.set_parse_mode(enums.ParseMode.HTML)
         untext = await app.send_message(
                       chat_id=KAYO_ID,
                       text=xtext,
                       disable_web_page_preview=True,
-                      parse_mode="html"
                   )
-        xt = untext.message_id
+        xt = untext.id
         await asyncio.sleep(3)
     except:
         pass
