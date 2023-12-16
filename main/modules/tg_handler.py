@@ -110,7 +110,7 @@ async def start_uploading(data):
             trust=trust.replace("Yes", " | #trusted")
         else:
             trust=trust.replace("No", "")
-        xtext = f"**{title}**" + "\n" + f"{size}" + " | " + f"[Download]({dlink})" + " | " + f"[View]({vlink})" + f"{remake}" + f"{trust}" + "\n" + f"[#c{cid} {category}]({clink})" + "\n" + "\n" + f"[🔗 Magnet]({magnet})"
+        xtext = "<b>" + f"{title}" + "</b>" + "<br>" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>" + f"{remake}" + f"{trust}" + "<br>" + f"<a href='{clink}'>#{cid} {category}</a>" + "<br>" + "<br>" + f"<a href='{magnet}'>🔗 Magnet</a>"
         KAYO_ID = -1001657593339
         untext = await app.send_message(
                       chat_id=KAYO_ID,
