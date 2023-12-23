@@ -11,7 +11,7 @@ def trim_link(vlink: str):
     vlink = vlink.replace(".torrent", "")
     return vlink
 def parse():
-    a = feedparser.parse("https://siftrss.com/f/1LNyVoo9RP")
+    a = feedparser.parse("https://nyaa.si/?page=rss")
     b = a["entries"]
     data = []       
 
@@ -90,6 +90,6 @@ async def start_uploadingx(data):
                   ) 
     except:
         pass
-    await asyncio.sleep(30)
+    await asyncio.sleep(60)
 
 
