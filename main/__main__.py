@@ -27,10 +27,8 @@ async def start_bot():
   await app.stop()  
   for task in asyncio.all_tasks():
     task.cancel()
-
 if __name__ == "__main__":
-  install()
-  with closing(loop):
-    with suppress(asyncio.exceptions.CancelledError):
-      loop.run_until_complete(start_bot())
-      loop.run_until_complete(asyncio.sleep(3.0))
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.run_until_complete(start_bot())
+  
