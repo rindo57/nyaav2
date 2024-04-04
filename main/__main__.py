@@ -7,7 +7,7 @@ from uvloop import install
 from contextlib import closing, suppress
 from main.modules.tg_handler import tg_handler
 
-loop = asyncio.get_event_loop()
+
 
 @app.on_message(filters.command(["help","ping"]))
 async def start(bot, message: Message):
