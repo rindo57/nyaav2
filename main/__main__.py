@@ -6,7 +6,7 @@ from pyrogram.types import Message
 from uvloop import install
 from contextlib import closing, suppress
 from main.modules.tg_handler import tg_handler
-import logging
+
 loop = asyncio.get_event_loop()
 
 @app.on_message(filters.command(["help","ping"]))
@@ -21,7 +21,7 @@ async def start_bot():
   print("[INFO]: Adding Parsing Task")
   asyncio.create_task(auto_parser())
   asyncio.create_task(tg_handler())
-  logging.basicConfig(level=logging.DEBUG)
+  
   await idle()
   print("[INFO]: BOT STOPPED")
   await app.stop()  
