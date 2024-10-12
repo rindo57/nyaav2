@@ -15,7 +15,9 @@ async def present_user(user_id : int):
     return bool(found)
 
 async def add_user(user_id: int):
-    user_data.insert_one({'_id': user_id})
+    
+    await user_data.insert_one({'_id': user_id})
+    
     return
 
 async def get_animesdb(): 
@@ -25,10 +27,12 @@ async def get_animesdb():
     return anime_list
 
 async def save_animedb(name,data): 
+    await asyncio.sleep(3)
     data = await animedb.insert_one({"name": name, "data": data})
     return
   
 async def del_anime(name): 
+    await asyncio.sleep(3)
     data = await animedb.delete_one({"name": name})
     return
 
@@ -39,5 +43,6 @@ async def get_uploads():
     return anime_list
 
 async def save_uploads(name): 
+    await asyncio.sleep(3)
     data = await uploadsdb.insert_one({"name": name})
     return
