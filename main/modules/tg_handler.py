@@ -100,7 +100,7 @@ async def start_uploading(data):
         cid = data['categoryid']
         category = data['category']
         remake = data['remake']
-        magnet = "https://nyaasi-to-magnet.up.railway.app/nyaamagnet/urn:btih:" + link
+        magnet = "https://lifailon.github.io/magnet2url/#magnet:?xt=urn:btih:" + link
         clink = "https://nyss.si/?c=" + cid
         if remake=="Yes":
             remake=remake.replace("Yes", " | #remake")
