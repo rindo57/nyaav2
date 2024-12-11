@@ -76,7 +76,7 @@ async def start_uploadingx(data):
         trust = data['trust']
         cid = data['categoryid']
         category = data['category']
-        magnet = "https://nyaasi.herokuapp.com/nyaamagnet/urn:btih:" + link
+        magnet = "https://lifailon.github.io/magnet2url/#magnet:?xt=urn:btih:" + link
         clink = "https://nyss.si/?c=" + "cid"
         if trust=="Yes":
             trust="#trusted"
