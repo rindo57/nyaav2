@@ -5,7 +5,21 @@ from main.modules.db import get_animesdb, get_uploads, save_animedb
 import feedparser
 from main import queue
 from main.inline import button1
+import re
 
+def extract_id(url):
+    # Regular expression pattern to match the ID in the URL
+    pattern = r'/view/(\d+)'  # This will capture digits after '/view/'
+    
+    # Search for the pattern in the URL
+    match = re.search(pattern, url)
+    
+    if match:
+        # Extract and return the ID
+        return match.group(1)
+    else:
+        return None
+        
 def trim_link(vlink: str):
     vlink = vlink.replace("download", "view")
     vlink = vlink.replace(".torrent", "")
@@ -77,12 +91,14 @@ async def start_uploadingx(data):
         cid = data['categoryid']
         category = data['category']
         magnet = "https://lifailon.github.io/magnet2url/#magnet:?xt=urn:btih:" + link
+        torid = extract_id(vlink)
+        cache = "https://ddlserverv1.me.in/view/" + torid
         clink = "https://nyss.si/?c=" + "cid"
         if trust=="Yes":
             trust="#trusted"
         else:
             trust=""
-        xtext = f"**{title}**" + "\n" + "{size}" + " | " + f"[Download]({dlink})" + " | " + f"[View]({vlink})" + " | " + "{trust}" + "\n" + f"[#C{cid} {category}](clink)" + "\n" + "\n" + f"[🔗 Magnet](magnet)"
+        xtext = f"**{title}**" + "\n" + "{size}" + " | " + f"[Download]({dlink})" + " | " + f"[View]({vlink})" + " (" + f"[Cache]({cache})" + ")" + " | " + "{trust}" + "\n" + f"[#C{cid} {category}](clink)" + "\n" + "\n" + f"[🔗 Magnet](magnet)"
         KAYO_ID = -1001900103251
         untext = await app.send_message(
                       chat_id=KAYO_ID,
