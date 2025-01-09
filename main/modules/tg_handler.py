@@ -115,7 +115,7 @@ async def start_uploading(data):
         remake = data['remake']
         magnet = "https://lifailon.github.io/magnet2url/#magnet:?xt=urn:btih:" + link
         torid = extract_id(vlink)
-        cache = "https://ddlserverv1.me.in/view/" + torid
+        cache = "https://cache.ddlserverv1.me.in/view/" + torid
         clink = "https://nyss.si/?c=" + cid
         if remake=="Yes":
             remake=remake.replace("Yes", " | #remake")
@@ -125,7 +125,7 @@ async def start_uploading(data):
             trust=trust.replace("Yes", " | #trusted")
         else:
             trust=trust.replace("No", "")
-        xtext = "<b>" + f"{title}" + "</b>" + "\n" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>"  + " (" + f"[Cache]({cache})" + ")" + f"{remake}" + f"{trust}" + "\n" + f"<a href='{clink}'>#{cid} {category}</a>" + "\n" + "\n" + f"<a href='{magnet}'>🔗 Magnet</a>"
+        xtext = "<b>" + f"{title}" + "</b>" + "\n" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>"  +  " (" + f"<a href='{cache}'>Cache</a>" + ")" + f"{remake}" + f"{trust}" + "\n" + f"<a href='{clink}'>#{cid} {category}</a>" + "\n" + "\n" + f"<a href='{magnet}'>🔗 Magnet</a>"
         KAYO_ID = -1001657593339
         app.set_parse_mode(enums.ParseMode.HTML)
         untext = await app.send_message(
