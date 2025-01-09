@@ -31,9 +31,22 @@ from pyrogram.errors import FloodWait
 from pyrogram import filters
 
 from main.inline import button1
+import re
+
 
 status: Message
-
+def extract_id(url):
+    # Regular expression pattern to match the ID in the URL
+    pattern = r'/view/(\d+)'  # This will capture digits after '/view/'
+    
+    # Search for the pattern in the URL
+    match = re.search(pattern, url)
+    
+    if match:
+        # Extract and return the ID
+        return match.group(1)
+    else:
+        return None
 async def tg_handler():
 
     while True:
@@ -101,6 +114,8 @@ async def start_uploading(data):
         category = data['category']
         remake = data['remake']
         magnet = "https://lifailon.github.io/magnet2url/#magnet:?xt=urn:btih:" + link
+        torid = extract_id(vlink)
+        cache = "https://ddlserverv1.me.in/view/" + torid
         clink = "https://nyss.si/?c=" + cid
         if remake=="Yes":
             remake=remake.replace("Yes", " | #remake")
@@ -110,7 +125,7 @@ async def start_uploading(data):
             trust=trust.replace("Yes", " | #trusted")
         else:
             trust=trust.replace("No", "")
-        xtext = "<b>" + f"{title}" + "</b>" + "\n" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>" + f"{remake}" + f"{trust}" + "\n" + f"<a href='{clink}'>#{cid} {category}</a>" + "\n" + "\n" + f"<a href='{magnet}'>🔗 Magnet</a>"
+        xtext = "<b>" + f"{title}" + "</b>" + "\n" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>"  + " (" + f"[Cache]({cache})" + ")" + f"{remake}" + f"{trust}" + "\n" + f"<a href='{clink}'>#{cid} {category}</a>" + "\n" + "\n" + f"<a href='{magnet}'>🔗 Magnet</a>"
         KAYO_ID = -1001657593339
         app.set_parse_mode(enums.ParseMode.HTML)
         untext = await app.send_message(
