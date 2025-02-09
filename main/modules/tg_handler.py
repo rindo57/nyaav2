@@ -65,18 +65,7 @@ async def tg_handler():
                 await asyncio.sleep(2)
 
             else:                
-
-                if "Idle..." in status.text:
-
-                    try:
-
-                        await status.edit(await status_text("Idle..."),reply_markup=button1)
-
-                    except:
-
-                        pass
-
-                await asyncio.sleep(30)
+                await asyncio.sleep(5)
 
                 
 
