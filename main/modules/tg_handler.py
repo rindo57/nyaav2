@@ -117,6 +117,7 @@ async def start_uploading(data):
         torid = extract_id(vlink)
         cache = "https://cache.ddlserverv1.me.in/view/" + torid
         clink = "https://nyss.si/?c=" + cid
+        animetosho = "https://animetosho.org/view/n" + torid
         if remake=="Yes":
             remake=remake.replace("Yes", " | #remake")
         else:
@@ -125,7 +126,10 @@ async def start_uploading(data):
             trust=trust.replace("Yes", " | #trusted")
         else:
             trust=trust.replace("No", "")
-        xtext = "<b>" + f"{title}" + "</b>" + "\n" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>"  +  " (" + f"<a href='{cache}'>Cache</a>" + ")" + f"{remake}" + f"{trust}" + "\n" + f"<a href='{clink}'>#{cid} {category}</a>" + "\n" + "\n" + f"<a href='{magnet}'>🔗 Magnet</a>"
+        if category=="Anime - English-translated":
+            xtext = "<b>" + f"{title}" + "</b>" + "\n" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>"  +  " (" + f"<a href='{cache}'>Cache</a>" + ")" + f"{remake}" + f"{trust}" + "\n" + f"<a href='{clink}'>#{cid} {category}</a>" + "\n" + "\n" + f"<a href='{magnet}'>🔗 Magnet</a>" + " | " + f"<a href='{animetosho}'>🔗 AnimeTosho</a>
+        else:
+            xtext = "<b>" + f"{title}" + "</b>" + "\n" + f"{size}" + " | " + f"<a href='{dlink}'>Download</a>" + " | " + f"<a href='{vlink}'>View</a>"  +  " (" + f"<a href='{cache}'>Cache</a>" + ")" + f"{remake}" + f"{trust}" + "\n" + f"<a href='{clink}'>#{cid} {category}</a>" + "\n" + "\n" + f"<a href='{magnet}'>🔗 Magnet</a>"
         KAYO_ID = -1001657593339
         app.set_parse_mode(enums.ParseMode.HTML)
         untext = await app.send_message(
