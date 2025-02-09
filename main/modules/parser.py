@@ -106,6 +106,6 @@ async def start_uploadingx(data):
                   ) 
     except:
         pass
-    await asyncio.sleep(30)
+    await asyncio.sleep(10)
 
 
