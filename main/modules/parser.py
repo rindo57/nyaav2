@@ -25,7 +25,7 @@ def trim_link(vlink: str):
     vlink = vlink.replace(".torrent", "")
     return vlink
 def parse():
-    a = feedparser.parse("https://siftrss.com/f/xekXJmPJRn")
+    a = feedparser.parse("https://nyaa-proxy.vercel.app/?page=rss")
     b = a["entries"]
     data = []       
 
