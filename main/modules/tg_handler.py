@@ -62,7 +62,7 @@ async def tg_handler():
 
                 await save_uploads(i["title"])
                 i = await queue.pop(0)
-                await asyncio.sleep(5)
+                await asyncio.sleep(2)
 
             else:                
 
@@ -138,7 +138,7 @@ async def start_uploading(data):
                       disable_web_page_preview=True,
                   )
         xt = untext.id
-        await asyncio.sleep(3)
+        await asyncio.sleep(2)
     except:
         pass
 
